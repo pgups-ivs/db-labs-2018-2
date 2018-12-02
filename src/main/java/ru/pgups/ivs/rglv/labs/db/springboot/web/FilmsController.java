@@ -1,0 +1,21 @@
+package ru.pgups.ivs.rglv.labs.db.springboot.web;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import ru.pgups.ivs.rglv.labs.db.repository.FilmRepository;
+
+@Controller
+public class FilmsController {
+    @Autowired
+    FilmRepository filmRepository;
+
+    @GetMapping("/film/{filmId}")
+    public String filmView(Model model, @PathVariable Long filmId) {
+        model.addAttribute("film", filmRepository.getOne(filmId));
+
+        return "filmView";
+    }
+}

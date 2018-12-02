@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'DVD Labs - film category &quot;' + ${category.name} + '&quot;'"></title>
+</head>
+<body>
+<h1 th:text="${category.name}"></h1>
+<table>
+    <tr th:each="film: ${films}">
+        <td>
+            <a th:href="@{~/film/{id}(id=${film.id})}" th:text="${film.title} + ' (' + ${film.releaseYear} + ')'"></a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
